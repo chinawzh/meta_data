@@ -28,7 +28,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 public class BizAttrController {
-    private final BizDataServiceImpl bizDataService;
     private final BizAttrServiceImpl bizAttrService;
 
     @GetMapping("/list")
@@ -37,13 +36,19 @@ public class BizAttrController {
         if (CollectionUtils.isEmpty(bizAttrs)) {
             return Collections.EMPTY_LIST;
         } else {
-            return bizAttrs.stream().map(BizAttr::getAttrCode).collect(Collectors.toList());
+            return bizAttrs;
         }
     }
 
     @PostMapping
     public String add(@RequestBody @Validated BizAttr bizAttr) {
         bizAttrService.insertSelective(bizAttr);
+        return "success";
+    }
+
+    @PutMapping
+    public String update(@RequestBody @Validated BizAttr bizAttr) {
+        bizAttrService.updateByPrimaryKeySelective(bizAttr);
         return "success";
     }
 }

@@ -27,7 +27,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class BizDataController {
     private final BizDataServiceImpl bizDataService;
-    private final BizAttrServiceImpl bizAttrService;
 
     @GetMapping("/list")
     public List<Map> listStudent(@PathVariable String code) {
@@ -46,6 +45,18 @@ public class BizDataController {
             }};
         }
         return result.get(0);
+    }
+
+    @PostMapping
+    public String add(@PathVariable String code, @PathVariable Long id) {
+
+        return "success";
+    }
+
+    @PutMapping
+    public String update(@PathVariable String code, @PathVariable Long id) {
+
+        return "success";
     }
 
     private List<Map> meta2Obj(List<BizData> bizDataList) {

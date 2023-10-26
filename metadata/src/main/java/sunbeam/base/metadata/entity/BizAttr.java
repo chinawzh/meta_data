@@ -31,12 +31,15 @@ public class BizAttr {
     @Column(name = "fk_biz_form_code")
     private String fkBizFormCode;
 
+    @NotBlank(message = "属性编码不能为空")
     @Column(name = "attr_code")
     private String attrCode;
 
+    @NotBlank(message = "属性类型不能为空")
     @Column(name = "attr_type")
     private String attrType;
 
+    @NotBlank(message = "属性名称不能为空")
     @Column(name = "attr_name")
     private String attrName;
 
